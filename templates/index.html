@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>Card Details</title>
+</head>
+<body>
+    <div class="container">
+
+        <form action="{% url 'cardlink' %}" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+        <label for="ipcardnum">Enter the first digits of a card number (BIN/IIN)</label>
+        <input type="text" class="form-control" id="ipcardnum" aria-describedby="cardHelp" name = "cardnum" placeholder="Enter first digits of Card">
+        <small id="cardHelp" class="form-text text-muted">After entering the card digits press enter or click on submit.</small>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    {% if f %}
+        <div class="form-row">
+            <div class="col">
+              <label for="ipscheme">Scheme</label>
+              <input type="text" class="form-control" id = "ipscheme" value = {{ data.scheme }}>
+            </div>
+            <div class="col">
+              <label for="iptype">Type</label>
+              <input type="text" class="form-control" id = "iptype" value = {{ data.type }}>
+            </div>
+            </div>
+            <div class="form-row">
+            <div class="col">
+              <label for="ipbrand">Brand</label>
+              <input type="text" class="form-control" id = "ipbrand" value = {{ data.brand }}>
+            </div>
+            <div class="col">
+              <label for="ipcountry">Country</label>
+              <input type="text" class="form-control" id = "ipcountry" value = {{ data.country }}>
+            </div>
+            </div>
+            <div class="form-row">
+            <div class="col">
+              <label for="ipname">Bank Name</label>
+              <input type="text" class="form-control" id = "ipname" value = {{ data.name }}>
+            </div>
+            <div class="col">
+              <label for="ipurl">Url</label>
+              <input type="text" class="form-control" id = "ipurl" value = {{ data.url }}>
+            </div>
+            </div>
+            <div class="form-row">
+            <div class="col">
+              <label for="ipphone">Phone Number</label>
+              <input type="text" class="form-control" id = "ipphone" value = {{ data.phone }}>
+            </div>
+
+            </div>
+    {% endif %}
+    </div>
+
+
+</body>
+</html>
